@@ -7,6 +7,7 @@ export { default as Menu } from '@mui/material/Menu';
 export { default as MenuIcon } from '@mui/icons-material/Menu';
 export { default as Container } from '@mui/material/Container';
 export { default as Avatar } from '@mui/material/Avatar';
+export { default as Grid } from '@mui/material/Grid';
 export { default as Button } from '@mui/material/Button';
 export { default as Tooltip } from '@mui/material/Tooltip';
 export { default as MenuItem } from '@mui/material/MenuItem';

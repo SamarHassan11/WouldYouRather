@@ -1,11 +1,15 @@
 import React from 'react'
+import ErrorBoundary from './components/common/ErrorBoundary';
 import Header from './components/Header'
+
 
 function App() {
     return (
-        <div className="App">
-            <Header />
-        </div>
+        <ErrorBoundary>
+            <div>
+                <Header />
+            </div>
+        </ErrorBoundary>
     );
 }
 
