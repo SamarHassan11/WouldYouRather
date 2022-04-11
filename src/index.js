@@ -1,14 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { createRoot } from 'react-dom/client';
+import { Router } from 'react-router-dom';
+
 import './styles.css'
+import App from './App';
 import Storage from './utils/storage';
+import browserHistory from './utils/history';
 
 Storage.configureStore();
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root'));
+root.render(
     <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root')
+        <Router history={browserHistory}>
+            <App />
+        </Router>
+    </React.StrictMode>
 );
