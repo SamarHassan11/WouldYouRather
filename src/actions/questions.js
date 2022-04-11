@@ -1,6 +1,6 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-import { _getQuestions, _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA'
+import { getQuestions, saveQuestion, saveQuestionAnswer } from '../utils/api'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_ANSWER = 'ADD_ANSWER'
@@ -17,7 +17,7 @@ export function handleGetQuestions() {
     return (dispatch) => {
         dispatch(showLoading())
 
-        _getQuestions()
+        getQuestions()
             .then((questions) => {
                 dispatch(receiveQuestions(questions))
             })
@@ -42,7 +42,7 @@ export function handleAddQuestion(question) {
     return (dispatch) => {
         dispatch(showLoading())
 
-        _saveQuestion(question)
+        saveQuestion(question)
             .then(() => {
                 dispatch(addQuestion(question))
             })
@@ -69,7 +69,7 @@ export function handleAddAnswer(answer) {
     return (dispatch) => {
         dispatch(showLoading())
 
-        _saveQuestionAnswer(answer)
+        saveQuestionAnswer(answer)
             .then(() => {
                 dispatch(addAnswer(answer))
             })

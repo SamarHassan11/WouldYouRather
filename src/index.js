@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Router } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 
 import middleware from './middleware';
@@ -13,10 +13,14 @@ import browserHistory from './utils/history';
 
 Storage.configureStore();
 
-const store = createStore({
+const store = createStore(
     reducer,
-    middleware
-});
+    compose(
+        middleware,
+        // eslint-disable-next-line no-underscore-dangle
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+    )
+);
 
 const root = createRoot(document.getElementById('root'));
 root.render(
