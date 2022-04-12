@@ -44,7 +44,6 @@ function AddAnswer(props) {
                         <FormControl sx={{ my: 2 }}>
                             <RadioGroup
                                 aria-labelledby="demo-radio-buttons-group-label"
-                                // defaultValue="optionOne"
                                 value={value}
                                 name="radio-buttons-group"
                                 onChange={handleOptionChange}

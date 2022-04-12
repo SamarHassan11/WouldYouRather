@@ -20,7 +20,7 @@ function ViewResults(props) {
                     Asked by {askedBy.name}
                 </Typography>
             </Box>
-            <Card sx={{ display: 'flex', my: 2 }}>
+            <Card sx={{ display: 'flex', my: 2, width: '100%' }}>
                 <CardMedia
                     component="img"
                     sx={{ width: 151, m: 3, height: '200px' }}

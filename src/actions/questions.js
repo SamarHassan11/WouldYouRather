@@ -43,8 +43,8 @@ export function handleAddQuestion(question) {
         dispatch(showLoading())
 
         saveQuestion(question)
-            .then(() => {
-                dispatch(addQuestion(question))
+            .then((formattedQuestion) => {
+                dispatch(addQuestion(formattedQuestion))
             })
             .catch((e) => {
                 console.warn('Error in handleToggleQuestion: ', e)
