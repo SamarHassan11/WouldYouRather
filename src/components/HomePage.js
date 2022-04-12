@@ -40,24 +40,24 @@ function HomePage(props) {
                 </Box>
                 <TabPanel value="1">
                     {
-                        Object.keys(questions).filter(question => !answeredQuestions.includes(question))
+                        questions.filter(question => !answeredQuestions.includes(question.id))
                             .map(question => (
                                 <QuestionCard
-                                    key={questions[question].id}
-                                    question={questions[question]}
-                                    user={users[questions[question].author]}
+                                    key={question.id}
+                                    question={question}
+                                    user={users[question.author]}
                                 />
                             ))
                     }
                 </TabPanel>
                 <TabPanel value="2">
                     {
-                        Object.keys(questions).filter(question => answeredQuestions.includes(question))
+                        questions.filter(question => answeredQuestions.includes(question.id))
                             .map(question => (
                                 <QuestionCard
-                                    key={questions[question].id}
-                                    question={questions[question]}
-                                    user={users[questions[question].author]}
+                                    key={question.id}
+                                    question={question}
+                                    user={users[question.author]}
                                 />
                             ))
                     }
@@ -69,9 +69,13 @@ function HomePage(props) {
 }
 
 const mapStateToProps = ({ questions, users, authedUser }) => {
+    const sortedQuestions = Object.values(questions).sort(function (a, b) {
+        return b.timestamp - a.timestamp;
+    });
+
     return {
         user: !isEmpty(users) ? users[authedUser] : null,
-        questions,
+        questions: sortedQuestions,
         users
     }
 }
