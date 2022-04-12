@@ -8,6 +8,7 @@ import Header from './components/Header'
 import Login from './components/Login';
 import HomePage from './components/HomePage';
 import AddQuestion from './components/AddQuestion';
+import Question from './components/Question';
 import LeaderBoard from './components/LeaderBoard';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import { PageNotFound } from './components/common';
@@ -38,17 +39,11 @@ class App extends React.Component {
                         <LoadingBar />
                         {authedUser && <Header />}
                         <Switch>
-                            <Route exact path={ROUTE_URLS.homePage}
-                                component={requireAuthentication(HomePage)
-                                } />
-                            <Route exact path={ROUTE_URLS.addQuestion}
-                                component={AddQuestion
-                                } />
-                            <Route exact path={ROUTE_URLS.leaderBoard}
-                                component={requireAuthentication(LeaderBoard)
-                                } />
-                            <Route exact path={ROUTE_URLS.login}
-                                component={Login} />
+                            <Route exact path={ROUTE_URLS.homePage} component={requireAuthentication(HomePage)} />
+                            <Route exact path={ROUTE_URLS.addQuestion} component={AddQuestion} />
+                            <Route exact path={ROUTE_URLS.viewQuestion} component={Question} />
+                            <Route exact path={ROUTE_URLS.leaderBoard} component={requireAuthentication(LeaderBoard)} />
+                            <Route exact path={ROUTE_URLS.login} component={Login} />
                             <Route path="*" component={PageNotFound} />
                         </Switch>
                     </div>

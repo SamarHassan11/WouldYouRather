@@ -5,4 +5,5 @@ export const ROUTE_URLS = {
     login: `${BASE_ROUTE}login/`,
     leaderBoard: `${BASE_ROUTE}leader_board/`,
     addQuestion: `${BASE_ROUTE}questions/add/`,
+    viewQuestion: `${BASE_ROUTE}questions/:id/`,
 }
