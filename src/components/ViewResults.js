@@ -14,7 +14,7 @@ function ViewResults(props) {
     const isOneSelected = question.optionOne.votes.includes(authedUser) ? true : false;
 
     return (
-        <Grid sx={{ maxWidth: '600px', margin: '0 auto', mt: 3 }} container>
+        <Grid sx={{ maxWidth: '700px', margin: '0 auto', mt: 3 }} container>
             <Box>
                 <Typography component="div" variant="h6">
                     Asked by {askedBy.name}
@@ -27,12 +27,14 @@ function ViewResults(props) {
                     image={`/images/${askedBy.avatarURL}`}
                     alt="Live from space album cover"
                 />
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                         <Typography component="div" variant="h5">
                             Results:
                         </Typography>
-                        <Card sx={{ p: 2, my: 1, position: 'relative' }} className={isOneSelected ? 'active-card' : null}>
+                        <Card sx={{ p: 2, my: 1, position: 'relative', maxWidth: '440px', width: '100%' }}
+                            className={isOneSelected ? 'active-card' : null}
+                        >
                             <Typography variant="body" color="text.secondary" component="div" sx={{ mb: 1 }}>
                                 Would you rather {question.optionOne.text}
                             </Typography>
@@ -48,7 +50,9 @@ function ViewResults(props) {
                                 </Typography>
                             }
                         </Card>
-                        <Card sx={{ p: 2, my: 1, position: 'relative' }} className={!isOneSelected ? 'active-card' : null}>
+                        <Card sx={{ p: 2, my: 1, position: 'relative', maxWidth: '440px', width: '100%' }}
+                            className={!isOneSelected ? 'active-card' : null}
+                        >
                             <Typography variant="body" color="text.secondary" component="div" sx={{ mb: 1 }}>
                                 Would you rather {question.optionTwo.text}
                             </Typography>

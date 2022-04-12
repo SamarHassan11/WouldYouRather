@@ -1,3 +1,6 @@
+* {
+    overflow-wrap: break-word;
+}
 .active-link {
     border-bottom: 2px solid #fff;
 }

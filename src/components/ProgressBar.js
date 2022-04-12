@@ -17,7 +17,7 @@ export default function ProgressBar(props) {
                     value={percentage}
                 />
             </Box>
-            <Box sx={{ minWidth: 35 }}>
+            <Box sx={{ minWidth: 60 }}>
                 <Typography variant="body2" color="text.secondary">
                     {percentage.toFixed(2)}%
                 </Typography>
