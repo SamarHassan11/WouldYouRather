@@ -24,3 +24,7 @@ export { default as Tab } from '@mui/material/Tab';
 export { default as Tabs } from '@mui/material/Tabs';
 export { default as TabContext } from '@material-ui/lab/TabContext';
 export { default as TabPanel } from '@material-ui/lab/TabPanel';
+export { default as LinearProgress } from '@mui/material/LinearProgress';
+export { default as RadioGroup } from '@mui/material/RadioGroup';
+export { default as Radio } from '@mui/material/Radio';
+export { default as FormControlLabel } from '@mui/material/FormControlLabel';

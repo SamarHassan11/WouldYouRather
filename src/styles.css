@@ -1,3 +1,8 @@
 .active-link {
     border-bottom: 2px solid #fff;
 }
+.active-card{
+    background-color: rgb(15 205 26 / 20%) !important;
+    border: 1px solid rgb(0, 70, 0);
+    border-radius: 3px;
+}

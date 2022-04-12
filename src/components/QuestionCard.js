@@ -16,10 +16,10 @@ function QuestionCard(props) {
                     {user.name} asks:
                 </Typography>
             </Box>
-            <Card sx={{ display: 'flex', height: '200px', my: 2 }}>
+            <Card sx={{ display: 'flex', my: 2 }}>
                 <CardMedia
                     component="img"
-                    sx={{ width: 151, m: 3 }}
+                    sx={{ width: 151, m: 3, height: '200px' }}
                     image={`/images/${user.avatarURL}`}
                     alt="Live from space album cover"
                 />
