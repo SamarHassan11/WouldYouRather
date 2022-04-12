@@ -56,10 +56,10 @@ export function handleAddQuestion(question) {
     }
 }
 
-function addAnswer({ question_id, authedUser, answer }) {
+function addAnswer({ qid, authedUser, answer }) {
     return {
         type: ADD_ANSWER,
-        question_id,
+        qid,
         authedUser,
         answer,
     }

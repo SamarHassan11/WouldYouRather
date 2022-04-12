@@ -9,14 +9,14 @@ export default function users(state = {}, action) {
                 ...action.users,
             }
         case ADD_ANSWER:
-            const { question_id, answer, authedUser } = action
+            const { qid, answer, authedUser } = action
             return {
                 ...state,
                 [authedUser]: {
                     ...state[authedUser],
                     answers: {
                         ...state[authedUser].answers,
-                        [question_id]: answer
+                        [qid]: answer
                     }
                 }
             }
