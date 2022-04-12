@@ -94,6 +94,13 @@ function Login(props) {
                 </Card>
 
             </Grid>
+            <div style={{ position: 'absolute', bottom: '5px' }}>
+                <a style={{ textDecoration: 'none', color: '#888' }}
+                    href='https://www.freepik.com/vectors/avatar-pack'
+                >
+                    Avatar pack vector created by pikisuperstar - www.freepik.com
+                </a>
+            </div>
         </Grid>
     )
 }
