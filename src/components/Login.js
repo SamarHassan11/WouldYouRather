@@ -102,4 +102,4 @@ const mapStateToProps = ({ users }) => ({
     users
 })
 
-export default connect(mapStateToProps)(withRouter(Login));
+export default withRouter(connect(mapStateToProps)(Login));

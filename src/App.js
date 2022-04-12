@@ -41,13 +41,13 @@ class App extends React.Component {
                             <Route exact path={ROUTE_URLS.homePage}
                                 component={requireAuthentication(HomePage)
                                 } />
-                            <Route path={ROUTE_URLS.addQuestion}
+                            <Route exact path={ROUTE_URLS.addQuestion}
                                 component={AddQuestion
                                 } />
-                            <Route path={ROUTE_URLS.leaderBoard}
+                            <Route exact path={ROUTE_URLS.leaderBoard}
                                 component={requireAuthentication(LeaderBoard)
                                 } />
-                            <Route path={ROUTE_URLS.login}
+                            <Route exact path={ROUTE_URLS.login}
                                 component={Login} />
                             <Route path="*" component={PageNotFound} />
                         </Switch>

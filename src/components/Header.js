@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -19,10 +19,6 @@ const settings = ['Logout'];
 const Header = (props) => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-
-    // useEffect(function () {
-
-    // }, [props.authedUser])
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -91,7 +87,7 @@ const Header = (props) => {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page[1]} onClick={handleCloseNavMenu}>
-                                    <NavLink to={page[1]}>
+                                    <NavLink to={page[1]} activeClassName="active-link">
                                         <Typography textAlign="center">{page[0]}</Typography>
                                     </NavLink>
                                 </MenuItem>
@@ -113,7 +109,12 @@ const Header = (props) => {
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                <NavLink to={page[1]} style={{ my: 2, color: 'white', display: 'block', textDecoration: 'none' }}>
+                                <NavLink
+                                    exact
+                                    to={page[1]}
+                                    style={{ my: 2, color: 'white', display: 'block', textDecoration: 'none' }}
+                                    activeClassName="active-link"
+                                >
                                     {page[0]}
                                 </NavLink>
                             </Button>
@@ -165,4 +166,4 @@ const Header = (props) => {
 
 const mapStateToProps = ({ authedUser, users }) => ({ authedUser, users })
 
-export default connect(mapStateToProps)(withRouter(Header));
+export default withRouter(connect(mapStateToProps)(Header));
