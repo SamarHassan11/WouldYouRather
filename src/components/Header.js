@@ -1,15 +1,28 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import { NavLink, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { ROUTE_URLS } from '../utils/constants';
 import {
     AppBar, Box, Toolbar, IconButton, Typography, Menu, MenuIcon, Container,
     Avatar, Button, Tooltip, MenuItem
 } from './common';
 
-const pages = ['Home', 'New Question', 'Leader Board'];
+import Storage from '../utils/storage';
+import { removeAuthedUser } from '../actions/authedUser';
+
+const pages = [['Home', ROUTE_URLS.homePage], ['New Question', ROUTE_URLS.addQuestion],
+['Leader Board', ROUTE_URLS.leaderBoard]];
+
 const settings = ['Logout'];
 
-const Header = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+const Header = (props) => {
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
+
+    // useEffect(function () {
+
+    // }, [props.authedUser])
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -25,6 +38,14 @@ const Header = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const logout = () => {
+        props.dispatch(removeAuthedUser())
+        Storage.removeItem('token');
+        props.history.push(ROUTE_URLS.login);
+    }
+
+    const user = props.users[props.authedUser];
 
     return (
         <AppBar position="static">
@@ -69,8 +90,10 @@ const Header = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                <MenuItem key={page[1]} onClick={handleCloseNavMenu}>
+                                    <NavLink to={page[1]}>
+                                        <Typography textAlign="center">{page[0]}</Typography>
+                                    </NavLink>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -90,12 +113,14 @@ const Header = () => {
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                {page}
+                                <NavLink to={page[1]} style={{ my: 2, color: 'white', display: 'block', textDecoration: 'none' }}>
+                                    {page[0]}
+                                </NavLink>
                             </Button>
                         ))}
                     </Box>
 
-                    <Box sx={{ flexGrow: 0 }}>
+                    {user && <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Typography
@@ -104,9 +129,9 @@ const Header = () => {
                                     component="div"
                                     sx={{ mr: 2, color: 'white' }}
                                 >
-                                    Hello, Sarah
+                                    Hello, {user.name}
                                 </Typography>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt={user.name} src={`/images/${user.avatarURL}`} />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -127,15 +152,17 @@ const Header = () => {
                         >
                             {settings.map((setting) => (
                                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                                    <Typography textAlign="center" onClick={logout}>{setting}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
-                    </Box>
+                    </Box>}
                 </Toolbar>
             </Container>
         </AppBar>
     );
 };
 
-export default Header;
+const mapStateToProps = ({ authedUser, users }) => ({ authedUser, users })
+
+export default connect(mapStateToProps)(withRouter(Header));

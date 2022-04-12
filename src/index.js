@@ -1,6 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Router } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -9,7 +8,6 @@ import reducer from './reducers';
 import './styles.css'
 import App from './App';
 import Storage from './utils/storage';
-import browserHistory from './utils/history';
 
 Storage.configureStore();
 
@@ -22,13 +20,9 @@ const store = createStore(
     )
 );
 
-const root = createRoot(document.getElementById('root'));
-root.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <Router history={browserHistory}>
-                <App />
-            </Router>
-        </Provider>
-    </React.StrictMode>
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
 );
