@@ -19,7 +19,13 @@ function AddQuestion(props) {
         }
         props.dispatch(handleAddQuestion({ optionOneText, optionTwoText, author }));
         props.history.push(ROUTE_URLS.homePage);
-    }    
+    }
+
+    const keyDown = e => {
+        if (e.keyCode === 13) {
+            handleSubmit();
+        }
+    }
 
     return (
         <Grid sx={{ maxWidth: '600px', margin: '0 auto', mt: 3 }} container>
@@ -47,6 +53,7 @@ function AddQuestion(props) {
                         variant="filled"
                         value={optionOneText}
                         onChange={e => setOptionOneText(e.target.value)}
+                        onKeyDown={keyDown}
                         fullWidth
                         autoFocus
                     />
@@ -57,6 +64,7 @@ function AddQuestion(props) {
                         variant="filled"
                         value={optionTwoText}
                         onChange={e => setOptionTwoText(e.target.value)}
+                        onKeyDown={keyDown}
                         fullWidth
                     />
                     <Button
