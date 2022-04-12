@@ -67,17 +67,17 @@ function Login(props) {
                                 onChange={handleUserChange}
                             >
                                 {
-                                    Object.keys(users).map(id => (
+                                    Object.values(users).map(user => (
                                         <MenuItem
-                                            key={users[id].id}
-                                            value={users[id].id}
+                                            key={user.id}
+                                            value={user.id}
                                         >
                                             <Avatar
                                                 sx={{ mr: 2 }}
                                                 alt={user.name}
-                                                src={`/images/${users[id].avatarURL}`}
+                                                src={`/images/${user.avatarURL}`}
                                             />
-                                            {users[id].name}
+                                            {user.name}
                                         </MenuItem>
                                     ))
                                 }
