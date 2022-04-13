@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import LoadingBar from 'react-redux-loading'
+import LoadingBar from 'react-redux-loading-bar'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 import { requireAuthentication } from './components/common';

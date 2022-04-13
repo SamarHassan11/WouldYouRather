@@ -9,6 +9,7 @@ import QuestionCard from './QuestionCard';
 
 
 function HomePage(props) {
+    const [value, setValue] = useState('1');
     const { user, users, questions } = props;
 
     const loading = !user || isEmpty(questions);
@@ -18,7 +19,6 @@ function HomePage(props) {
     }
 
     const answeredQuestions = Object.keys(user.answers);
-    const [value, setValue] = useState('1');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

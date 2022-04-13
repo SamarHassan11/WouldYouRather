@@ -21,7 +21,7 @@ function Login(props) {
         if (token) {
             props.history.push(ROUTE_URLS.homePage)
         }
-    }, []);
+    });
 
     const handleUserChange = (e) => {
         setUser(e.target.value);
